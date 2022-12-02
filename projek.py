@@ -170,21 +170,33 @@ def tombolmulai():
     glVertex2f(220, 50)
     glEnd()
 
+onfloor = True
+def lompat(value = 0):
+    global chary, onfloor
+    if chary <= 1480 and onfloor == True:
+        chary += 25
+        if chary >= 1480:
+            onfloor = False
+    if chary >= 480 and onfloor == False:
+        chary -= grafiti
+    glutTimerFunc(10, lompat, value)
+    
 def start(key,x,y):
-    global mulai, chary
+    global mulai, chary, onfloor
     if key == b'\r':
         mulai = True
     
-    if key == b' ':  
-        # chary+=1000
+    if key == b' ':
+        onfloor = True
+        lompat()  
+        # if chary <= 1480 and onfloor == True:
+        #     chary += 2
+        #     if chary >= 1480:
+        #         chary = False
+            
+            
 
-        if chary <= 1480:
-            chary += 500
-
-grafiti = 4
-
-
-
+grafiti = 25
 
 def iterate():
     glViewport(0, 0, 1280, 700)
@@ -201,8 +213,8 @@ def showScreen():
     iterate()
     glutSwapBuffers()
     glClearColor(0, 200, 200, 1)
-    if chary >= 480:
-        chary -= grafiti
+    # if chary >= 480:
+    #     chary -= grafiti
         
     if mulai == True:  
         pohon()
