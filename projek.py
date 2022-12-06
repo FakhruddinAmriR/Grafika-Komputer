@@ -10,7 +10,6 @@ charx = 0
 chary = 0
 grafiti = 25
 
-collide = 0
 score = 0
 
 def pohon():
