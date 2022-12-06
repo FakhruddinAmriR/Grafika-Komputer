@@ -7,7 +7,7 @@ pos_y = 0
 
 mulai = False
 charx = 0
-chary = 100
+chary = 0
 grafiti = 25
 
 def pohon():
@@ -61,76 +61,35 @@ def char():
     glColor3ub(255, 255, 255)
 
     glBegin(GL_POLYGON)
-    glVertex2f(100, 40)
-    glVertex2f(60, 40)
-
-    glVertex2f(60, 40)
+    glVertex2f(100, 140)
     glVertex2f(60, 140)
-
-    glVertex2f(60, 140)
-    glVertex2f(160, 160)
-
-    glVertex2f(80, 160)
-    glVertex2f(140, 160)
-      
-    glVertex2f(140, 160)
+    glVertex2f(60, 240)
+    glVertex2f(80, 260)
+    glVertex2f(140, 260)
+    glVertex2f(160, 240)
     glVertex2f(160, 140)
-
-    glVertex2f(160, 140)
-    glVertex2f(160, 40)
-
-    glVertex2f(160, 40)
-    glVertex2f(120, 60)
-
-    glVertex2f(120, 60)
-    glVertex2f(120, 20)
-
-    glVertex2f(120, 20)
-    glVertex2f(100, 20)
-
-    glVertex2f(100, 20)
-    glVertex2f(100, 60)
+    glVertex2f(120, 140)
+    glVertex2f(120, 120)
+    glVertex2f(100, 120)
+    glVertex2f(100, 140)
     glEnd() 
 
     glColor3ub(255, 0, 0)
     glBegin(GL_POLYGON)
-    glVertex2f(160, 140)
-    glVertex2f(128, 140)
-
-    glVertex2f(128, 140)
-    glVertex2f(120, 128)
-
-    glVertex2f(120, 128)
-    glVertex2f(128, 116)
-
-    glVertex2f(128, 116)
-    glVertex2f(160, 116)
+    glVertex2f(160, 230)
+    glVertex2f(140, 230)
+    glVertex2f(130, 220)
+    glVertex2f(140, 210)
+    glVertex2f(160, 210)
     glEnd()
     
     
     glColor3ub(80, 80, 80) #hitam
     glBegin(GL_POLYGON)
-    glVertex2f(80, 8)
-    glVertex2f(60, 8)
-
-    glVertex2f(60, 8)
-    glVertex2f(60, 28)
-
-    glVertex2f(60, 28)
-    glVertex2f(120, 28)
-
-    glVertex2f(120, 28)
-    glVertex2f(120, 20)
-
-    glVertex2f(120, 20)
-    glVertex2f(100, 20)
-
-    glVertex2f(80, 00)
-    glVertex2f(140, 00)
-
-    glVertex2f(140, 100)
-    glVertex2f(20, 100)
-
+    glVertex2f(60, 100)
+    glVertex2f(60, 120)
+    glVertex2f(160, 120)
+    glVertex2f(160, 100)
     glEnd()
     glPopMatrix()
 
@@ -171,7 +130,7 @@ def tombolmulai():
     glTranslated(250, 100, 0)
     glLineWidth(10)
     glColor3ub(85, 150, 20)
-    glBegin(GL_LINE_LOOP)
+    glBegin(GL_POLYGON)
     glVertex2f(50, 50)
     glVertex2f(50, 380)
     glVertex2f(100, 420)
@@ -264,7 +223,7 @@ def lompat(value = 0):
         glutTimerFunc(15,lompat,0)
         if chary >= 450:
             onfloor=False
-    if onfloor==False and chary>=110:
+    if onfloor==False and chary>=10:
         chary-=15
         glutTimerFunc(15,lompat,0)
     
@@ -279,7 +238,7 @@ def start(key,x,y):
       
 def collision():
     global charx, chary, pos_x, pos_y, mulai
-    if chary in range(pos_y+100, pos_y+200) and charx in range (pos_x+1280, pos_x+1380):
+    if chary in range(pos_y+0, pos_y+100) and charx in range (pos_x+1280, pos_x+1380):
         print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         mulai=False
         
