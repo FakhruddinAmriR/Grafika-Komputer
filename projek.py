@@ -10,6 +10,9 @@ charx = 0
 chary = 0
 grafiti = 25
 
+collide = 0
+score = 0
+
 def pohon():
 
     #daun
@@ -238,11 +241,11 @@ def start(key,x,y):
       
 def collision():
     global charx, chary, pos_x, pos_y, mulai
-    if chary in range(pos_y+0, pos_y+100) and charx in range (pos_x+1280, pos_x+1380):
+    if chary in range(pos_y+0, pos_y+100) and charx in range (pos_x+1200, pos_x+1400):
         print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         mulai = False
         pos_x = 0
-        
+
 def iterate():
     glViewport(0, 0, 1280, 700)
     glMatrixMode(GL_PROJECTION)
