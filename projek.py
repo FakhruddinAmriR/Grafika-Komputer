@@ -59,7 +59,8 @@ def char():
     glTranslated(charx, chary, 0)
     glColor3ub(255, 255, 255)
 
-    if chary-1250 == pos_x:
+
+    if chary in range(pos_x+1350, pos_x+1400):
         print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
     glBegin(GL_POLYGON)
@@ -142,10 +143,10 @@ def jalan():
     glPushMatrix()
     glTranslated(pos_x, pos_y, 0)
 
-    print("pos_x=",pos_x)
+    print("pos_x =",pos_x)
 
-    pos_x-=3
-    if pos_x <= -5000:
+    pos_x-=2
+    if pos_x <= -3000:
         pos_x = 0
     glScale(10, 10, 0)
     glTranslated(0, 1, 0)
