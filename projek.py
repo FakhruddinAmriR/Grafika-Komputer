@@ -7,7 +7,7 @@ pos_y = 0
 
 mulai = False
 charx = 0
-chary = 500
+chary = 100
 
 def pohon():
 
@@ -55,84 +55,84 @@ def pohon():
 def char():
     global charx, chary, pos_x, pos_y
     glPushMatrix()
-    glScale(0.2 , 0.2 , 0)
+    # glScale(0.2 , 0.2 , 0)
     glTranslated(charx, chary, 0)
     glColor3ub(255, 255, 255)
 
 
-    if chary in range(pos_x+1350, pos_x+1400):
+    if chary in range(pos_y+100, pos_y+200) and charx in range (pos_x+1280, pos_x+1480):
         print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
     glBegin(GL_POLYGON)
-    glVertex2f(500, 200)
-    glVertex2f(300, 200)
+    glVertex2f(100, 40)
+    glVertex2f(60, 40)
 
-    glVertex2f(300, 200)
-    glVertex2f(300, 700)
+    glVertex2f(60, 40)
+    glVertex2f(60, 140)
 
-    glVertex2f(300, 700)
-    glVertex2f(400, 800)
+    glVertex2f(60, 140)
+    glVertex2f(160, 160)
 
-    glVertex2f(400, 800)
-    glVertex2f(700, 800)
+    glVertex2f(80, 160)
+    glVertex2f(140, 160)
       
-    glVertex2f(700, 800)
-    glVertex2f(800, 700)
+    glVertex2f(140, 160)
+    glVertex2f(160, 140)
 
-    glVertex2f(800, 700)
-    glVertex2f(800, 200)
+    glVertex2f(160, 140)
+    glVertex2f(160, 40)
 
-    glVertex2f(800, 200)
-    glVertex2f(600, 300)
+    glVertex2f(160, 40)
+    glVertex2f(120, 60)
 
-    glVertex2f(600, 300)
-    glVertex2f(600, 100)
+    glVertex2f(120, 60)
+    glVertex2f(120, 20)
 
-    glVertex2f(600, 100)
-    glVertex2f(500, 100)
+    glVertex2f(120, 20)
+    glVertex2f(100, 20)
 
-    glVertex2f(500, 100)
-    glVertex2f(500, 300)
+    glVertex2f(100, 20)
+    glVertex2f(100, 60)
     glEnd() 
 
     glColor3ub(255, 0, 0)
     glBegin(GL_POLYGON)
-    glVertex2f(800, 700)
-    glVertex2f(640, 700)
+    glVertex2f(160, 140)
+    glVertex2f(128, 140)
 
-    glVertex2f(640, 700)
-    glVertex2f(600, 640)
+    glVertex2f(128, 140)
+    glVertex2f(120, 128)
 
-    glVertex2f(600, 640)
-    glVertex2f(640, 580)
+    glVertex2f(120, 128)
+    glVertex2f(128, 116)
 
-    glVertex2f(640, 580)
-    glVertex2f(800, 580)
+    glVertex2f(128, 116)
+    glVertex2f(160, 116)
     glEnd()
     
     
     glColor3ub(80, 80, 80) #hitam
     glBegin(GL_POLYGON)
-    glVertex2f(400, 40)
-    glVertex2f(300, 40)
+    glVertex2f(80, 8)
+    glVertex2f(60, 8)
 
-    glVertex2f(300, 40)
-    glVertex2f(300, 140)
+    glVertex2f(60, 8)
+    glVertex2f(60, 28)
 
-    glVertex2f(300, 140)
-    glVertex2f(600, 140)
+    glVertex2f(60, 28)
+    glVertex2f(120, 28)
 
-    glVertex2f(600, 140)
-    glVertex2f(600, 100)
+    glVertex2f(120, 28)
+    glVertex2f(120, 20)
 
-    glVertex2f(600, 100)
-    glVertex2f(500, 100)
+    glVertex2f(120, 20)
+    glVertex2f(100, 20)
 
-    glVertex2f(400, 00)
-    glVertex2f(700, 00)
+    glVertex2f(80, 00)
+    glVertex2f(140, 00)
 
-    glVertex2f(700, 100)
-    glVertex2f(400, 100)
+    glVertex2f(140, 100)
+    glVertex2f(20, 100)
 
     glEnd()
     glPopMatrix()
@@ -146,27 +146,29 @@ def jalan():
     print("pos_x =",pos_x)
 
     pos_x-=2
-    if pos_x <= -3000:
+    if pos_x <= -1500:
         pos_x = 0
-    glScale(10, 10, 0)
+    # glScale(10, 10, 0)
     glTranslated(0, 1, 0)
     glColor3ub(136, 69, 19)
     glBegin(GL_POLYGON)
-    glVertex2f(0, 10)
-    glVertex2f(1000, 10)
-    glVertex2f(1000, 0)
+    glVertex2f(0, 100)
+    glVertex2f(2800, 100)
+    glVertex2f(2800, 0)
     glVertex2f(0, 0)
     glEnd()   
 
+    #rintangan
     glTranslated(0, 1, 0)
     glColor3ub(80, 80, 80)
     glBegin(GL_POLYGON)
-    glVertex2f(100, 0)
-    glVertex2f(100, 20)
-    glVertex2f(110, 20)
-    glVertex2f(110, 0)
+    glVertex2f(1280, 100)
+    glVertex2f(1280, 200)
+    glVertex2f(1480, 200)
+    glVertex2f(1480, 100)
     glEnd()
     glPopMatrix()
+    
 
 def tombolmulai():
     glColor3ub(80, 80, 80)
@@ -178,15 +180,18 @@ def tombolmulai():
     glEnd()
 
 onfloor = True
+
 def lompat(value = 0):
     global chary, onfloor
-    if chary <= 1500 and onfloor == True:
+    if chary <= 450 and onfloor == True:
         chary += 25
-        if chary >= 1500:
+        if chary >= 450:
             onfloor = False
-    if chary >= 500 and onfloor == False:
+    
+    elif chary >= 100 and onfloor == False:
         chary -= grafiti
     glutTimerFunc(10, lompat, value)
+
     
 def start(key,x,y):
     global mulai, chary, onfloor
