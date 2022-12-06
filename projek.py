@@ -6,8 +6,8 @@ pos_x = 0
 pos_y = 0
 
 mulai = False
-
-chary = 480
+charx = 0
+chary = 500
 
 def pohon():
 
@@ -53,11 +53,15 @@ def pohon():
     glPopMatrix()
 
 def char():
-
+    global charx, chary, pos_x, pos_y
     glPushMatrix()
     glScale(0.2 , 0.2 , 0)
-    glTranslated(0, chary, 0)
+    glTranslated(charx, chary, 0)
     glColor3ub(255, 255, 255)
+
+    if chary-1250 == pos_x:
+        print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
     glBegin(GL_POLYGON)
     glVertex2f(500, 200)
     glVertex2f(300, 200)
@@ -138,6 +142,8 @@ def jalan():
     glPushMatrix()
     glTranslated(pos_x, pos_y, 0)
 
+    print("pos_x=",pos_x)
+
     pos_x-=3
     if pos_x <= -5000:
         pos_x = 0
@@ -173,11 +179,11 @@ def tombolmulai():
 onfloor = True
 def lompat(value = 0):
     global chary, onfloor
-    if chary <= 1480 and onfloor == True:
+    if chary <= 1500 and onfloor == True:
         chary += 25
-        if chary >= 1480:
+        if chary >= 1500:
             onfloor = False
-    if chary >= 480 and onfloor == False:
+    if chary >= 500 and onfloor == False:
         chary -= grafiti
     glutTimerFunc(10, lompat, value)
     
