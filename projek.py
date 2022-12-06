@@ -171,12 +171,89 @@ def jalan():
     
 
 def tombolmulai():
-    glColor3ub(80, 80, 80)
-    glBegin(GL_POLYGON)
+    glTranslated(250, 100, 0)
+    glLineWidth(10)
+    glColor3ub(85, 150, 20)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(50, 50)
+    glVertex2f(50, 380)
+    glVertex2f(100, 420)
+    glVertex2f(240, 420)
+    glVertex2f(300, 350)
+    glVertex2f(300, 270)
+    glVertex2f(250, 200)
+    glVertex2f(200, 200)
+    glVertex2f(160, 200)
+    glVertex2f(200, 140)
+    glVertex2f(240, 100)
+    glVertex2f(300, 50)
     glVertex2f(200, 50)
-    glVertex2f(200, 20)
-    glVertex2f(220, 20)
-    glVertex2f(220, 50)
+    glVertex2f(140, 100)
+    glVertex2f(100, 160)
+    glVertex2f(100, 50)
+    glEnd()
+
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(340, 280)
+    glVertex2f(340, 400)
+    glVertex2f(360, 420)
+    glVertex2f(420, 420)
+    glVertex2f(440, 400)
+    glVertex2f(440, 280)
+    glVertex2f(420, 260)
+    glVertex2f(360, 260)
+    glEnd()
+
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(460, 400)
+    glVertex2f(480, 420)
+    glVertex2f(520, 420)
+    glVertex2f(540, 400)
+    glVertex2f(540, 360)
+    glVertex2f(520, 340)
+    glVertex2f(540, 320)
+    glVertex2f(540, 280)
+    glVertex2f(520, 260)
+    glVertex2f(480, 260)
+    glVertex2f(460, 280)
+    glEnd()
+
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(580, 400)
+    glVertex2f(600, 420)
+    glVertex2f(660, 420)
+    glVertex2f(680, 400)
+    glVertex2f(680, 280)
+    glVertex2f(660, 260)
+    glVertex2f(600, 260)
+    glVertex2f(580, 280)
+    glEnd()
+
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(360, 60)
+    glVertex2f(340, 80)
+    glVertex2f(340, 180)
+    glVertex2f(360, 160)
+    glVertex2f(360, 80)
+    glVertex2f(400, 70)
+    glVertex2f(440, 80)
+    glVertex2f(440, 160)
+    glVertex2f(460, 180)
+    glVertex2f(460, 80)
+    glVertex2f(440, 60)
+    glEnd()
+
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(480, 180)
+    glVertex2f(500, 180)
+    glVertex2f(560, 80)
+    glVertex2f(560, 180)
+    glVertex2f(580, 180)
+    glVertex2f(580, 60)
+    glVertex2f(560, 60)
+    glVertex2f(500, 140)
+    glVertex2f(500, 60)
+    glVertex2f(480, 60)
     glEnd()
 
 onfloor = True
@@ -184,13 +261,13 @@ onfloor = True
 def lompat(value = 0):
     global chary, onfloor
     if chary <= 450 and onfloor == True:
-        chary += 25
+        chary += 25 
         if chary >= 450:
             onfloor = False
-    
-    elif chary >= 100 and onfloor == False:
-        chary -= grafiti
-    glutTimerFunc(10, lompat, value)
+
+    if chary >= 100 and onfloor == False:
+        chary -= grafiti 
+    # glutTimerFunc(10, lompat, value)
 
     
 def start(key,x,y):
@@ -200,12 +277,7 @@ def start(key,x,y):
     
     if key == b' ':
         onfloor = True
-        lompat()  
-        # if chary <= 1480 and onfloor == True:
-        #     chary += 2
-        #     if chary >= 1480:
-        #         chary = False
-            
+        lompat()
             
 
 grafiti = 25
