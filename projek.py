@@ -240,7 +240,8 @@ def collision():
     global charx, chary, pos_x, pos_y, mulai
     if chary in range(pos_y+0, pos_y+100) and charx in range (pos_x+1280, pos_x+1380):
         print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-        mulai=False
+        mulai = False
+        pos_x = 0
         
 def iterate():
     glViewport(0, 0, 1280, 700)
