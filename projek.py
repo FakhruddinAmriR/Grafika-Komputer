@@ -8,6 +8,7 @@ pos_y = 0
 mulai = False
 charx = 0
 chary = 100
+grafiti = 25
 
 def pohon():
 
@@ -58,10 +59,6 @@ def char():
     # glScale(0.2 , 0.2 , 0)
     glTranslated(charx, chary, 0)
     glColor3ub(255, 255, 255)
-
-
-    if chary in range(pos_y+100, pos_y+200) and charx in range (pos_x+1280, pos_x+1480):
-        print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
     glBegin(GL_POLYGON)
     glVertex2f(100, 40)
@@ -259,7 +256,7 @@ def tombolmulai():
 onfloor = True
 
 def lompat(value = 0):
-    global chary, onfloor
+    global chary, onfloor, grafiti
     if chary <= 450 and onfloor == True:
         chary += 25 
         if chary >= 450:
@@ -267,8 +264,9 @@ def lompat(value = 0):
 
     if chary >= 100 and onfloor == False:
         chary -= grafiti 
-    # glutTimerFunc(10, lompat, value)
+    glutTimerFunc(10, lompat, value)
 
+    print(grafiti)
     
 def start(key,x,y):
     global mulai, chary, onfloor
@@ -278,10 +276,13 @@ def start(key,x,y):
     if key == b' ':
         onfloor = True
         lompat()
-            
-
-grafiti = 25
-
+      
+def collision():
+    global charx, chary, pos_x, pos_y, mulai
+    if chary in range(pos_y+100, pos_y+200) and charx in range (pos_x+1280, pos_x+1480):
+        print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        mulai=False
+        
 def iterate():
     glViewport(0, 0, 1280, 700)
     glMatrixMode(GL_PROJECTION)
@@ -291,7 +292,7 @@ def iterate():
     glLoadIdentity()
 
 def showScreen():
-    global mulai, chary
+    global mulai
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
     iterate()
@@ -304,6 +305,7 @@ def showScreen():
         pohon()
         char()
         jalan()
+        collision()
     else :
         tombolmulai()
     glFlush()
