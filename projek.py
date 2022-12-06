@@ -142,7 +142,7 @@ def jalan():
 
     print("pos_x =",pos_x)
 
-    pos_x-=2
+    pos_x-=3
     if pos_x <= -1500:
         pos_x = 0
     # glScale(10, 10, 0)
@@ -161,8 +161,8 @@ def jalan():
     glBegin(GL_POLYGON)
     glVertex2f(1280, 100)
     glVertex2f(1280, 200)
-    glVertex2f(1480, 200)
-    glVertex2f(1480, 100)
+    glVertex2f(1380, 200)
+    glVertex2f(1380, 100)
     glEnd()
     glPopMatrix()
     
@@ -257,16 +257,16 @@ onfloor = True
 
 def lompat(value = 0):
     global chary, onfloor, grafiti
-    if chary <= 450 and onfloor == True:
-        chary += 25 
-        if chary >= 450:
-            onfloor = False
-
-    if chary >= 100 and onfloor == False:
-        chary -= grafiti 
-    glutTimerFunc(10, lompat, value)
-
     print(grafiti)
+
+    if onfloor==True:
+        chary+=15
+        glutTimerFunc(15,lompat,0)
+        if chary >= 450:
+            onfloor=False
+    if onfloor==False and chary>=110:
+        chary-=15
+        glutTimerFunc(15,lompat,0)
     
 def start(key,x,y):
     global mulai, chary, onfloor
