@@ -279,7 +279,7 @@ def start(key,x,y):
       
 def collision():
     global charx, chary, pos_x, pos_y, mulai
-    if chary in range(pos_y+100, pos_y+200) and charx in range (pos_x+1280, pos_x+1480):
+    if chary in range(pos_y+100, pos_y+200) and charx in range (pos_x+1280, pos_x+1380):
         print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         mulai=False
         
