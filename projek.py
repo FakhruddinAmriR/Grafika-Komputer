@@ -9,6 +9,7 @@ mulai = False
 charx = 0
 chary = 0
 grafiti = 15
+speed = 2
 
 def pohon():
 
@@ -95,15 +96,22 @@ def char():
 
 def jalan():
 
-    global pos_x, pos_y
+    global pos_x, pos_y, speed
     glPushMatrix()
     glTranslated(pos_x, pos_y, 0)
 
     print("pos_x =",pos_x)
+    pos_x -= speed
 
-    pos_x-=3
-    if pos_x <= -1500:
+    if pos_x <= -1580:
         pos_x = 0
+        # pos_x -= speed
+    
+    #  pos_x == 0 :
+    #     pos_x -= speed
+    # if pos_x == 0:
+    
+
     # glScale(10, 10, 0)
     glTranslated(0, 1, 0)
     glColor3ub(136, 69, 19)
@@ -130,7 +138,7 @@ def tombolmulai():
     glTranslated(250, 100, 0)
     glLineWidth(10)
     glColor3ub(85, 150, 20)
-    glBegin(GL_POLYGON)
+    glBegin(GL_LINE_LOOP)
     glVertex2f(50, 50)
     glVertex2f(50, 380)
     glVertex2f(100, 420)
@@ -252,7 +260,7 @@ def iterate():
     glLoadIdentity()
 
 def showScreen():
-    global mulai
+    global mulai, speed
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
     iterate()
@@ -261,7 +269,9 @@ def showScreen():
     # if chary >= 480:
     #     chary -= grafiti
         
-    if mulai == True:  
+    if mulai == True: 
+        if pos_x == 0:
+            speed+=0.5
         pohon()
         char()
         jalan()
