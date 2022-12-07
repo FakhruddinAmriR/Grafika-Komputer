@@ -104,7 +104,7 @@ def jalan():
     print("pos_x =",pos_x)
     pos_x -= speed
 
-    if pos_x <= -1580:
+    if pos_x <= -1500:
         pos_x = 0
 
     # glScale(10, 10, 0)
@@ -219,7 +219,6 @@ onfloor = True
 
 def lompat(value = 0):
     global chary, onfloor, grafiti
-    print(grafiti)
 
     if onfloor==True:
         chary+=15
@@ -275,17 +274,17 @@ def showScreen():
     #     chary -= grafiti
         
     if mulai == True: 
-        if pos_x == -1500:
+        if pos_x == 0:
             score += 1
         if pos_x == 0:
-            speed+=0.5
+            speed+=0.2
         pohon()
         char()
         jalan()
         collision()
         showscore()
     else :
-        score = 0
+        score = -1
         speed = 2
         tombolmulai()
     glFlush()
