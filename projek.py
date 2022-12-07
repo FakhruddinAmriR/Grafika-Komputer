@@ -230,19 +230,21 @@ def lompat(value = 0):
         glutTimerFunc(15,lompat,0)
     
 def start(key,x,y):
-    global mulai, chary, onfloor
+    global mulai, chary, onfloor, menu
     if key == b'\r':
         mulai = True
+        menu = False
     
     if key == b' ':
         onfloor = True
         lompat()
       
 def collision():
-    global charx, chary, pos_x, pos_y, mulai
+    global charx, chary, pos_x, pos_y, mulai, menu, perintah
     if chary in range(pos_y+0, pos_y+100) and charx in range (int(pos_x)+1280, int(pos_x)+1380):
-        print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        # print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         mulai = False
+        perintah = True
         pos_x = 0
 
 def showscore():
@@ -254,6 +256,18 @@ def showscore():
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, ord(i))
     glPopMatrix()
 
+perintah = True
+
+def title_menu():
+    global perintah
+    text = f'TEKAN ENTER UNTUK MEMULAI'
+    glPushMatrix()
+    glColor3ub(80, 80, 80)
+    glRasterPos2f(500, 100)
+    if perintah == True:
+        for i in text:
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, ord(i))
+    glPopMatrix()
 
 def iterate():
     glViewport(0, 0, 1280, 700)
@@ -264,16 +278,17 @@ def iterate():
     glLoadIdentity()
 
 def showScreen():
-    global mulai, speed, score
+    global mulai, speed, score, menu, perintah
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
     iterate()
     glutSwapBuffers()
     glClearColor(0, 200, 200, 1)
-    # if chary >= 480:
-    #     chary -= grafiti
-        
-    if mulai == True: 
+
+    title_menu()
+
+    if mulai == True:
+        perintah = False 
         if pos_x == 0:
             score += 1
         if pos_x == 0:
@@ -287,6 +302,7 @@ def showScreen():
         score = -1
         speed = 2
         tombolmulai()
+
     glFlush()
     glutSwapBuffers()
 
