@@ -10,6 +10,7 @@ charx = 0
 chary = 0
 grafiti = 15
 speed = 2
+score = 0
 
 def pohon():
 
@@ -105,12 +106,6 @@ def jalan():
 
     if pos_x <= -1580:
         pos_x = 0
-        # pos_x -= speed
-    
-    #  pos_x == 0 :
-    #     pos_x -= speed
-    # if pos_x == 0:
-    
 
     # glScale(10, 10, 0)
     glTranslated(0, 1, 0)
@@ -246,11 +241,21 @@ def start(key,x,y):
       
 def collision():
     global charx, chary, pos_x, pos_y, mulai
-    if chary in range(pos_y+0, pos_y+100) and charx in range (pos_x+1280, pos_x+1380):
+    if chary in range(pos_y+0, pos_y+100) and charx in range (int(pos_x)+1280, int(pos_x)+1380):
         print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         mulai = False
         pos_x = 0
-        
+
+def showscore():
+    text = f'SCORE : {score}'
+    glPushMatrix()
+    glColor3ub(250, 0, 0)
+    glRasterPos2f(20, 670)
+    for i in text:
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, ord(i))
+    glPopMatrix()
+
+
 def iterate():
     glViewport(0, 0, 1280, 700)
     glMatrixMode(GL_PROJECTION)
@@ -260,7 +265,7 @@ def iterate():
     glLoadIdentity()
 
 def showScreen():
-    global mulai, speed
+    global mulai, speed, score
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
     iterate()
@@ -270,13 +275,18 @@ def showScreen():
     #     chary -= grafiti
         
     if mulai == True: 
+        if pos_x == -1500:
+            score += 1
         if pos_x == 0:
             speed+=0.5
         pohon()
         char()
         jalan()
         collision()
+        showscore()
     else :
+        score = 0
+        speed = 2
         tombolmulai()
     glFlush()
     glutSwapBuffers()
