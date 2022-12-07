@@ -2,6 +2,7 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
+
 pos_x = 0
 pos_y = 0
 
@@ -11,6 +12,7 @@ chary = 0
 grafiti = 15
 speed = 2
 score = 0
+perintah = True
 
 def pohon():
 
@@ -230,20 +232,38 @@ def lompat(value = 0):
         glutTimerFunc(15,lompat,0)
     
 def start(key,x,y):
-    global mulai, chary, onfloor
-    if key == b'\r':
-        mulai = True
+    global mulai, chary, onfloor, gameover, menu
     
-    if key == b' ':
-        onfloor = True
-        lompat()
+    if mulai == False:
+        if key == b'\r':
+            mulai = True
+            menu = False
+    
+        if key == b' ':
+            glutDestroyWindow(wind)
+
+    if mulai == True and gameover == False:
+        if key == b' ':
+            onfloor = True
+            lompat()
+
+    if gameover == True:
+        if key == b'\r':
+            gameover = False
+        
+        if key == b' ':
+            glutDestroyWindow(wind)
+
       
 def collision():
-    global charx, chary, pos_x, pos_y, mulai
+    global charx, chary, pos_x, pos_y, mulai, gameover, perintah, menu
     if chary in range(pos_y+0, pos_y+100) and charx in range (int(pos_x)+1280, int(pos_x)+1380):
         print("kenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-        mulai = False
+        # mulai = False
+        gameover = True
         pos_x = 0
+
+    
 
 def showscore():
     text = f'SCORE : {score}'
@@ -252,6 +272,17 @@ def showscore():
     glRasterPos2f(20, 670)
     for i in text:
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, ord(i))
+    glPopMatrix()
+
+def title_menu():
+    global perintah
+    text = f'TEKAN ENTER UNTUK MEMULAI'
+    glPushMatrix()
+    glColor3ub(80, 80, 80)
+    glRasterPos2f(200, 10)
+    if perintah == True:
+        for i in text:
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, ord(i))
     glPopMatrix()
 
 
@@ -263,6 +294,141 @@ def iterate():
     glMatrixMode (GL_MODELVIEW)
     glLoadIdentity()
 
+def gover():
+    glTranslated(150, 100, 0)
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(60, 300)
+    glVertex2f(140, 500)
+    glVertex2f(200, 500)
+    glVertex2f(280, 480)
+    glVertex2f(160, 480)
+    glVertex2f(100, 320)
+    glVertex2f(180, 320)
+    glVertex2f(240, 380)
+    glVertex2f(160, 380)
+    glVertex2f(180, 400)
+    glVertex2f(300, 400)
+    glVertex2f(200, 300)
+    glEnd()
+
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(280, 300)
+    glVertex2f(360, 500)
+    glVertex2f(500, 500)
+    glVertex2f(460, 300)
+    glVertex2f(420, 300)
+    glVertex2f(440, 380)
+    glVertex2f(340, 380)
+    glVertex2f(320, 300)
+    glEnd()
+
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(360, 420)
+    glVertex2f(400, 470)
+    glVertex2f(480, 470)
+    glVertex2f(440, 420)
+    glEnd()
+
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(560, 500)
+    glVertex2f(600, 500)
+    glVertex2f(620, 420)
+    glVertex2f(700, 500)
+    glVertex2f(740, 500)
+    glVertex2f(700, 300)
+    glVertex2f(660, 300)
+    glVertex2f(680, 400)
+    glVertex2f(620, 340)
+    glVertex2f(580, 420)
+    glVertex2f(540, 300)
+    glVertex2f(500, 300)
+    glEnd()
+
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(800, 500)
+    glVertex2f(940, 500)
+    glVertex2f(920, 480)
+    glVertex2f(840, 480)
+    glVertex2f(820, 420)
+    glVertex2f(920, 420)
+    glVertex2f(900, 380)
+    glVertex2f(810, 380)
+    glVertex2f(795, 320)
+    glVertex2f(900, 320)
+    glVertex2f(880, 300)
+    glVertex2f(760, 300)
+    glEnd()
+
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(170, 220)
+    glVertex2f(200, 260)
+    glVertex2f(300, 260)
+    glVertex2f(320, 220)
+    glVertex2f(320, 80)
+    glVertex2f(300, 50)
+    glVertex2f(200, 50)
+    glVertex2f(170, 80)
+    glEnd()
+
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(380, 260)
+    glVertex2f(440, 80)
+    glVertex2f(460, 80)
+    glVertex2f(520, 260)
+    glVertex2f(540, 260)
+    glVertex2f(480, 60)
+    glVertex2f(420, 60)
+    glVertex2f(360, 260)
+    glEnd()
+
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(700, 250)
+    glVertex2f(700, 220)
+    glVertex2f(600, 220)
+    glVertex2f(600, 160)
+    glVertex2f(700, 160)
+    glVertex2f(700, 140)
+    glVertex2f(600, 140)
+    glVertex2f(600, 80)
+    glVertex2f(700, 80)
+    glVertex2f(700, 50)
+    glVertex2f(570, 50)
+    glVertex2f(570, 250)
+    glEnd()
+
+    glColor3ub(250, 0, 0)
+    glLineWidth(10)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(730, 250)
+    glVertex2f(820, 250)
+    glVertex2f(860, 220)
+    glVertex2f(860, 160)
+    glVertex2f(840, 140)
+    glVertex2f(780, 140)
+    glVertex2f(860, 60)
+    glVertex2f(820, 40)
+    glVertex2f(760, 140)
+    glVertex2f(760, 70)
+    glVertex2f(720, 70)
+    glEnd()
+
+gameover = False
 def showScreen():
     global mulai, speed, score
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
@@ -272,8 +438,8 @@ def showScreen():
     glClearColor(0, 200, 200, 1)
     # if chary >= 480:
     #     chary -= grafiti
-        
-    if mulai == True: 
+  
+    if mulai == True and gameover == False: 
         if pos_x == 0:
             score += 1
         if pos_x == 0:
@@ -283,10 +449,18 @@ def showScreen():
         jalan()
         collision()
         showscore()
-    else :
+    elif mulai == True and gameover == True:
+        score = -1
+        speed = 2
+        gover()
+        title_menu()
+    
+    elif mulai == False:
         score = -1
         speed = 2
         tombolmulai()
+        title_menu()
+
     glFlush()
     glutSwapBuffers()
 
