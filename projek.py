@@ -8,7 +8,7 @@ pos_y = 0
 mulai = False
 charx = 0
 chary = 0
-grafiti = 25
+grafiti = 15
 
 def pohon():
 
@@ -221,7 +221,7 @@ def lompat(value = 0):
     if onfloor==True:
         chary+=15
         glutTimerFunc(15,lompat,0)
-        if chary >= 450:
+        if chary >= 400:
             onfloor=False
     if onfloor==False and chary>=10:
         chary-=15
